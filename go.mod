@@ -1,4 +1,4 @@
-module github.com/fd0/merger
+module github.com/fd0/ghm
 
 require (
 	github.com/google/go-cmp v0.2.0
