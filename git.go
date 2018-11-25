@@ -18,9 +18,19 @@ func Git(args ...string) ([]byte, error) {
 	return cmd.Output()
 }
 
+// GitQuiet runs "git" with the given arguments and surpresses output sent to stderr.
+func GitQuiet(args ...string) ([]byte, error) {
+	if Options.Verbose {
+		fmt.Printf("run quiet %v %v\n", "git", args)
+	}
+
+	cmd := exec.Command("git", args...)
+	return cmd.Output()
+}
+
 // AddRemote adds a new remote.
 func AddRemote(name, url string) error {
-	buf, err := Git("remote", "get-url", name)
+	buf, err := GitQuiet("remote", "get-url", name)
 	if err == nil {
 		haveURL := strings.TrimSpace(string(buf))
 		if haveURL != url {
