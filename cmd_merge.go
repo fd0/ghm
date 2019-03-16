@@ -41,7 +41,7 @@ var cmdMerge = &cobra.Command{
 			return err
 		}
 
-		msg := fmt.Sprintf("Merge pull request %v from %v/%v\n\n%v",
+		msg := fmt.Sprintf("Merge pull request #%v from %v/%v\n\n%v",
 			pr.ID, pr.Remote(), pr.Ref(), pr.Title)
 
 		fmt.Printf("merge %v/%v\n", pr.Remote(), pr.Ref())
